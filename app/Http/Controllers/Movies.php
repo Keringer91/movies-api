@@ -12,10 +12,16 @@ class Movies extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        return Movie::all();
-    }
+     public function index(Request $request)
+     {   
+         $search = $request->query('title');
+         if($search){
+
+             return Movie::search($search);
+         }
+         
+         return Movie::all();
+     }
 
     /**
      * Show the form for creating a new resource.
