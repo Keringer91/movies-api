@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Movie;
 use Illuminate\Http\Request;
+use App\Http\Requests\MovieRequest;
 
 class Movies extends Controller
 {
@@ -32,7 +33,7 @@ class Movies extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(MovieRequest $request)
     {
         $data = $request->all();
 
@@ -68,7 +69,7 @@ class Movies extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(MovieRequest $request, $id)
     {
         $movie = Movie::find($id);
         $movie->update($request->all());
