@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Http\Request;
-use Controllers\Movies;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,5 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('movies', 'Movies');
-
+Route::middleware('jwt')->resource('movies', 'Movies');
+Route::post('/login', 'Auth\LoginController@authenticate');
